@@ -4,9 +4,10 @@ using ll = long long;
 #define rep(i,n) for (int i = 0; i < (n); ++i)
 
 int main(){
-    int N, M, K;
+    int N, K;
+    ll M;
     cin >> N >> M >> K;
-    vector<int> A(N);
+    vector<ll> A(N);
     rep(i,N) cin >> A[i];
 
     int cnt = 0;
@@ -16,41 +17,30 @@ int main(){
         return 0;
     }
 
-    // X = 1<<d 以上が達成可能か？ で二分探索
-    int ok = 0;
-    int ng = 31;
-    int rem = 0;
-    while (ok + 1 < ng) {
-        int d = (ok + ng) / 2;
-        int X = (1<<d);
-        int msk = 1;
-        rep(i,d) (msk *= 2) += 1;
-        vector<int> v(N);
+    ll ac = 1;
+    ll wa = 1LL<<31;
+    while (ac + 1 < wa) {
+        ll wj = (ac + wa) / 2;
+        cerr << wj << endl;
+        ll msk = 0;
+        while (msk < wj) (msk *= 2) += 1;
+        vector<ll> v(N);
         rep(i,N) v[i] = (A[i] & msk);
         sort(v.rbegin(), v.rend());
 
-        ll lack = 0;
-        rep(i,K) lack += max(0, (X - v[i]));
-        if (lack > M) ng = d;
-        else {
-            ok = d;
-            rem = M - lack;
+        ll m = M;
+        rep(i,K) {
+            for (int d = 31; d >= 0; d--) {
+                if (!((wj>>d)&1)) continue;
+                if ((v[i]>>d)&1) continue;
+                ll msk2 = 1;
+                while (msk2 < (1<<d)) (msk2 *= 2) += 1;
+                m -= (1<<d) - (v[i]&msk2);
+                v[i] = (v[i]&(~msk2)) + (1<<d);
+            }
         }
-    }
-
-    int ac = (1<<ok);
-    int wa = ac * 2;
-    int msk = 1;
-    rep(i,ok) (msk *= 2) += 1;
-    vector<int> v(N);
-    rep(i,N) v[i] = (A[i] & msk);
-    sort(v.rbegin(), v.rend());
-    while (ac + 1 < wa) {
-        int X = (ac + wa) / 2;
-        ll lack = 0;
-        rep(i,K) lack += max(0, X - v[i]);
-        if (lack > M) wa = X;
-        else ac = X;
+        if (m < 0) wa = wj;
+        else ac = wj;
     }
 
     cout << ac << endl;
