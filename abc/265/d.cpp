@@ -5,8 +5,10 @@ using ll = long long;
 
 int main(){
     int N;
-    ll P, Q, R;
-    cin >> N >> P >> Q >> R;
+    vector<ll> P(N);
+    cin >> N;
+    rep(i,3) cin >> P[i];
+    rep(i,2) P[i+1] += P[i];
     vector<ll> A(N);
     rep(i,N) cin >> A[i];
 
@@ -15,21 +17,12 @@ int main(){
     rep(i,N) s[i+1] = s[i] + A[i];
 
     rep(x,N+1) {
-        auto itrx = lower_bound(s.begin(), s.end(), s[x] + P);
-        if (itrx == s.end() || s[x] + P != *itrx) {
-            continue;
+        bool ok = true;
+        rep(i,3) {
+            auto itr = lower_bound(s.begin(), s.end(), s[x] + P[i]);
+            if (itr == s.end() || s[x] + P[i] != *itr) ok = false;
         }
-        int y = itrx - s.begin();
-        auto itry = lower_bound(s.begin(), s.end(), s[y] + Q);
-        if (itry == s.end() || s[y] + Q != *itry) {
-            continue;
-        }
-        int z = itry - s.begin();
-        auto itrz = lower_bound(s.begin(), s.end(), s[z] + R);
-        if (itrz == s.end() || s[z] + R != *itrz) {
-            continue;
-        }
-        int w = itrz - s.begin();
+        if (!ok) continue;
         cout << "Yes" << endl;
         return 0;
     }
