@@ -3,15 +3,6 @@ using namespace std;
 using ll = long long;
 #define rep(i,n) for (int i = 0; i < (n); ++i)
 
-int bit(int x, int i) {return (x>>i)&1; }
-ll msk(int n) {
-    ll res = 0;
-    rep(i,n) {
-        res += (1LL<<i);
-    }
-    return res;
-}
-
 int main(){
     int N, K;
     ll M;
@@ -20,22 +11,21 @@ int main(){
     rep(i,N) cin >> A[i];
 
     ll ans = 0;
-    for (int j = 31; j >= 0; j--) {
-        ll x = ans + (1LL<<j);
-
-        vector<ll> v(N);
-        rep(i,N) {
+    for (int i = 35; i >= 0; i--) {
+        ll x = ans + (1LL << i);
+        vector<ll> v;
+        for (ll a : A) {
             ll b = 0;
-            for (int k = 31; k >= 0; k--) {
-                if (bit(x,k)) {
-                    b += (1LL<<k);
+            for (int j = 35; j >= 0; j--) {
+                if (x >> j & 1) {
+                    b += 1LL << j;
                 } else {
-                    if (b + msk(k) < A[i]) {
-                        b += (1LL<<k);
+                    if (b + (1LL << j) - 1 < a) {
+                        b += 1LL << j;
                     }
                 }
             }
-            v[i] = b - A[i];
+            v.push_back(b - a);
         }
         sort(v.begin(), v.end());
         ll cost = 0;
