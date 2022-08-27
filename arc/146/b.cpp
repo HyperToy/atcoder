@@ -3,6 +3,15 @@ using namespace std;
 using ll = long long;
 #define rep(i,n) for (int i = 0; i < (n); ++i)
 
+int bit(int x, int i) {return (x>>i)&1; }
+ll msk(int n) {
+    ll res = 0;
+    rep(i,n) {
+        res += (1LL<<i);
+    }
+    return res;
+}
+
 int main(){
     int N, K;
     ll M;
@@ -10,38 +19,33 @@ int main(){
     vector<ll> A(N);
     rep(i,N) cin >> A[i];
 
-    int cnt = 0;
-    rep(i,N) if (A[i] > 0) cnt++;
-    if (cnt + M < K) {
-        cout << 0 << endl;
-        return 0;
-    }
+    ll ans = 0;
+    for (int j = 31; j >= 0; j--) {
+        ll x = ans + (1LL<<j);
 
-    ll ac = 1;
-    ll wa = 1LL<<31;
-    while (ac + 1 < wa) {
-        ll wj = (ac + wa) / 2;
-        cerr << wj << endl;
-        ll msk = 0;
-        while (msk < wj) (msk *= 2) += 1;
         vector<ll> v(N);
-        rep(i,N) v[i] = (A[i] & msk);
-        sort(v.rbegin(), v.rend());
-
-        ll m = M;
-        rep(i,K) {
-            for (int d = 31; d >= 0; d--) {
-                if (!((wj>>d)&1)) continue;
-                if ((v[i]>>d)&1) continue;
-                ll msk2 = 1;
-                while (msk2 < (1<<d)) (msk2 *= 2) += 1;
-                m -= (1<<d) - (v[i]&msk2);
-                v[i] = (v[i]&(~msk2)) + (1<<d);
+        rep(i,N) {
+            ll b = 0;
+            for (int k = 31; k >= 0; k--) {
+                if (bit(x,k)) {
+                    b += (1LL<<k);
+                } else {
+                    if (b + msk(k) < A[i]) {
+                        b += (1LL<<k);
+                    }
+                }
             }
+            v[i] = b - A[i];
         }
-        if (m < 0) wa = wj;
-        else ac = wj;
+        sort(v.begin(), v.end());
+        ll cost = 0;
+        rep(i,K) {
+            cost += v[i];
+        }
+        if (cost <= M) {
+            ans = x;
+        }
     }
 
-    cout << ac << endl;
+    cout << ans << endl;
 } 
