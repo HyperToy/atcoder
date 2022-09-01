@@ -5,8 +5,9 @@ using namespace std;
 int main(){
     double n, m, d;
     cin >> n >> m >> d;
-    double ans = (min(n, 2 * d) + 2 * max(n - 2 * d, 0.0)) / n / n * (m - 1);
-    if (abs(d) < 1e-3) ans = 1 / n * (m - 1);
+    double ans;
+    if (d > 0) ans = 2 * (n - d) / n / n * (m - 1);
+    else ans = 1 / n * (m - 1);
     cout << fixed << setprecision(10);
     cout << ans << endl;
 } 
