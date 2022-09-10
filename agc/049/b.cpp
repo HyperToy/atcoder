@@ -2,66 +2,43 @@
 using namespace std;
 using ll = long long;
 #define rep(i,n) for (int i = 0; i < (n); ++i)
-#define per(i,n) for (int i = (n) - 1; i >= 0; --i)
 
 int main(){
     int N;
     string S, T;
     cin >> N >> S >> T;
-    stack<pair<int, int>> s, t;
+    ll ans = 0;
+    int i = 0;
+    int j = 0;
 
-    per(i,N) {
-        if (s.size() > 0 && S[i] - '0' == s.top().first) s.top().second++;
-        else s.emplace(S[i] - '0', 1);
-        if (t.size() > 0 && T[i] - '0' == t.top().first) t.top().second++;
-        else t.emplace(T[i] - '0', 1);
-    }
-
-    int ans = 0;
-    rep(_,N) {
-        if (s.top().first == t.top().first) {
-            s.top().second--; if (s.top().second == 0) s.pop();
-            t.top().second--; if (t.top().second == 0) t.pop();
+    while (i < N) {
+        if (S[i] == T[i]) {
+            i++;
             continue;
         }
 
-        if (s.top().first == 1) {
-            if (s.top().second == 1) {
-                if (s.size() < 3) {cout << -1 << endl; return 0; }
-                stack<pair<int, int>> temp;
-                rep(i,3) {temp.push(s.top()); s.pop(); }
-                temp.top().second--; 
-                if (temp.top().second > 0) s.push(temp.top());
-                temp.pop();
-                ans += temp.top().second + 1;
-                temp.top().second += 2;
-                if (s.top().first == temp.top().first) s.top().second += temp.top().second;
-                else s.push(temp.top());
-                temp.pop();
-                temp.pop();
-            } else {
-                ans += 1;
-                s.top().second -= 2;
-                if (s.top().second == 0) s.pop();
-                if (s.top().first == 0) s.top().second += 2;
-                else s.emplace(0, 2);
+        j = max(j, i + 1);
+        while (true) {
+            if (j == N) {
+                cout << -1 << endl;
+                return 0;
             }
-        } else {
-            if (s.size() < 2) {cout << -1 << endl; return 0; }
-            stack<pair<int, int>> temp;
-            rep(i,2) {temp.push(s.top()); s.pop(); }
-            temp.top().second--;
-            if (temp.top().second > 0) s.push(temp.top());
-            temp.pop();
-            ans += temp.top().second;
-            if (temp.top().first == s.top().first) s.top().second += temp.top().second;
-            else s.push(temp.top());
-            temp.pop();
-            s.emplace(1,1);
+            if (S[j] == '1') break;
+            j++;
         }
-
-        s.top().second--; if (s.top().second == 0) s.pop();
-        t.top().second--; if (t.top().second == 0) t.pop();
+        if (j != i + 1) {
+            swap(S[j], S[i + 1]);
+            ans += j - i - 1;
+        }
+        if (S[i] == '1') {
+            S[i] = S[i + 1] = '0';
+        } else {
+            S[i] = '1';
+            S[i + 1] = '0';
+        }
+        ans++;
+        i++;
     }
+
     cout << ans << endl;
 } 
