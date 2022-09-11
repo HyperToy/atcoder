@@ -12,29 +12,29 @@ int main(){
     vector<int> ip(N);
     rep(i,N) ip[p[i]] = i;
 
-    ll sum = 0;
-    vector<int> a(N, 0);
+    ll ans = 0;
     rep(i,N) {
-        int k = (ip[i] - i + N) % N;
-        if (k < N - k) {
-            // minus勢
-            a[0]--;
-            sum += k;
-        } else {
-            // plus勢
-            a[0]++;
-            sum += N - k;
-        }
-        a[k]+=2;
-        a[(k+N/2)%N]--;
-        a[(k+(N+1)/2)%N]--;
-    }
-    rep(j,N-1) a[j+1] += a[j];
-    ll ans = sum;
-    rep(j,N-1) {
-        sum += a[j];
-        ans = min(ans, sum);
+        int d = (p[i] - i + N) % N;
+        ans += min(d, N - d);
     }
 
+    ll delta = 0;
+    vector<int> e(N, 0);
+    rep(i,N) {
+        // d 回操作すると 人i の不満度が0になる
+        int d = (ip[i] - i + N) % N;
+        if (d <= N / 2) delta--;
+        if (d > (N+1) / 2) delta++;
+        e[d]+=2;
+        e[(d+N/2)%N]--;
+        e[(d+(N+1)/2)%N]--;
+    }
+
+    ll now = ans;
+    rep(i,N) {
+        now += delta;
+        ans = min(ans, now);
+        delta += e[i];
+    }
     cout << ans << endl;
 } 
