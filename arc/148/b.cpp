@@ -55,10 +55,10 @@ int main(){
     rep(i,d) {
         string s = div[i];
         rep(j,s.length()) {
-            if (vsp[i].size() > 0 && vsp[i].top().first == s[i]) {
+            if (vsp[i].size() > 0 && vsp[i].top().first == s[j]) {
                 vsp[i].top().second++;
             } else {
-                vsp[i].emplace(s[i], 1);
+                vsp[i].emplace(s[j], 1);
             }
         }
     }
@@ -68,7 +68,8 @@ int main(){
             use.insert(i);
         }
     }
-    while (true) {
+    for (int i : use) PR(i);
+    while (use.size() > 1) {
         set<int> next_use;
         int max_p_count = 0;
         for (int i : use) {
@@ -103,5 +104,18 @@ int main(){
 
     // 1 ~ *(use.begin()) をフリップ
     // int L = first_p_pos;
+    int cnt = 0;
+    for (int i = 1; i <= *(use.begin()); i++) {
+        cnt += div[i].length();
+    }
+    int L = first_p_pos;
+    int R = first_p_pos + cnt;
+
+    for (int i = L, j = R - 1; i < j; i++, j--) {
+        swap(S[i], S[j]);
+        S[i] = (S[i] == 'd' ? 'p' : 'd');
+        S[j] = (S[j] == 'd' ? 'p' : 'd');
+    }
     
+    cout << S << endl;
 } 
