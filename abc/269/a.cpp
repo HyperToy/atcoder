@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define PR(x) cerr << #x << " = " << x << endl
 
 int main(){
     int a, b, c, d;
