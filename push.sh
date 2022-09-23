@@ -3,3 +3,5 @@ git switch main
 git merge develop
 git push
 git switch develop
+
+git log -1
