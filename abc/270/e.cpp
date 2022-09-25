@@ -15,21 +15,18 @@ int main(){
 
     vector<ll> b = A;
     sort(b.begin(), b.end());
-    vector<pair<ll, ll>> v;
     ll pre = 0;
-    rep(i,N) {
-        v.emplace_back(N - i, b[i] - pre);
-        pre = b[i];
-    }
-
     ll total = 0;
     rep(i,N) {
-        if (K >= v[i].first * v[i].second) {
-            K -= v[i].first * v[i].second;
-            total += v[i].second;
+        ll cnt = N - i;
+        ll delta = b[i] - pre;
+        pre = b[i];
+        if (K >= cnt * delta) {
+            K -= cnt * delta;
+            total += delta;
         } else {
-            ll delta = K / v[i].first;
-            K -= v[i].first * delta;
+            delta = K / cnt;
+            K -= cnt * delta;
             total += delta;
             break;
         }
