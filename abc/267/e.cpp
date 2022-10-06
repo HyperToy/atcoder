@@ -32,7 +32,7 @@ int main(){
         if (erased[u]) continue;
         erased[u] = true;
         ans = max(ans, c);
-        for (int v : g[u]) {
+        for (int v : g[u]) if (!erased[v]) {
             cost[v] -= A[u];
             q.emplace(-cost[v], v);
         }
