@@ -4,11 +4,6 @@ fn main() {
     input! {
         s: String,
     }
-    let mut ans: u32 = 0;
-    for c in s.chars() {
-        if c == '1' {
-            ans += 1;
-        }
-    }
+    let ans: usize = s.chars().filter(|c| *c == '1').count();
     println!("{}", ans);
 }
