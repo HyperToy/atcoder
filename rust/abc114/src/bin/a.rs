@@ -2,9 +2,11 @@ fn main() {
     proconio::input! {
         x: u32,
     }
-    if x == 3 || x == 5 || x == 7 {
-        println!("YES");
-    } else {
-        println!("NO");
+    println! {
+        "{}",
+        match x {
+            3 | 5 | 7 => "YES",
+            _ => "NO",
+        }
     }
 }
