@@ -1,13 +1,12 @@
 use proconio::*;
-use proconio::marker::*;
 
 fn main() {
     input! {
-        s: Chars,
+        s: String,
     }
     let mut ans: u32 = 0;
-    for i in 0..3 {
-        if s[i] == '1' {
+    for c in s.chars() {
+        if c == '1' {
             ans += 1;
         }
     }
