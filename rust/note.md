@@ -53,3 +53,11 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
     - cargo に atcoder とつけるのを忘れて、 test は実行できたけど submit なんてコマンドはないよって怒られた。
 
 - とりあえず、ここまでで git commit しておく。
+
+- 3問目
+    - while true を書いたら、 loop にしな、と言われた。
+    - bool は普通に使えるらしい。
+    - なんか凄そうな [提出](https://atcoder.jp/contests/abs/submissions/35158051)
+        - trailing_zeros() というのを使っているが、察するところでは、bit 表記で末尾の 0 の数を返す感じかな。
+        - これの最小値を取っているっぽいところからも、おそらくあっている。
+        - こういうのがあるらしい [Rust 基本データ型勉強ノート](https://qiita.com/dmkd3006/items/ab39c6fe69edcda44452)
