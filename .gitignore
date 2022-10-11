@@ -1,3 +1,4 @@
 [a-z]
 .vscode/
 rust/target/
+rust/*/Cargo*
