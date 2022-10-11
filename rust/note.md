@@ -61,3 +61,9 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
         - trailing_zeros() というのを使っているが、察するところでは、bit 表記で末尾の 0 の数を返す感じかな。
         - これの最小値を取っているっぽいところからも、おそらくあっている。
         - こういうのがあるらしい [Rust 基本データ型勉強ノート](https://qiita.com/dmkd3006/items/ab39c6fe69edcda44452)
+
+- 灰埋め で streak を稼いでいる。
+    - いろいろ実験する中で（いろいろってほどじゃないけど）、設定ファイルは、生成された場所においておけば勝手に読み込んでくれるっぽかった。
+    ```sh
+    $ mv ~/Library/Preferences/cargo-atcoder.toml ~/Library/Application\ Support/cargo-atcoder.toml
+    ```
