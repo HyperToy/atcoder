@@ -8,11 +8,11 @@ fn main() {
     }
     let mut sleep: bool = false;
     let mut ans: u32 = 0;
-    for i in 0..n {
+    for (s, t) in st {
         if sleep {
-            ans += st[i].1;
+            ans += t;
         }
-        if x == st[i].0 {
+        if x == s {
             sleep = true;
         }
     }
