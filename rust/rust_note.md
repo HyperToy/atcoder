@@ -11,7 +11,7 @@ $ cargo atcoder submit <problem-id>
 
 ## [proconioまとめ](https://qiita.com/Pikka2048/items/a0247e792aa4f8f6dd92)
 
-## String 方に for (char c : s) みたいなことをする
+## String 型に for (char c : s) みたいなことをする
 ```rs
 // abc081_a
 input! {s: String, }
@@ -71,3 +71,7 @@ println!("{:?}", a);
 ## 入力が分岐する
 - 絶対ある分だけ受け取ってから、追加分を受け取る。
 - 普通に input!{} で、追加分は受け取れる。深いこと考えなくていい。
+
+## max, 多分 min も
+- use std::cmp::max;
+- この名前空間に関数が定義されている。
