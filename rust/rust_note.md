@@ -88,3 +88,4 @@ a.reverse();
 
 ## 文字列 substring
 - [参考](./tokiomarine2020/src/bin/a.rs)
+- substring のチェック [参考](./zone2021/src/bin/a.rs)
