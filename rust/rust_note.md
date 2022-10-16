@@ -85,3 +85,6 @@ input! {
 a.sort();
 a.reverse();
 ```
+
+## 文字列 substring
+- [参考](./tokiomarine2020/src/bin/a.rs)
