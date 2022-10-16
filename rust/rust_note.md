@@ -75,3 +75,13 @@ println!("{:?}", a);
 ## max, 多分 min も
 - use std::cmp::max;
 - この名前空間に関数が定義されている。
+
+## sort, reverse
+```rust
+input! {
+    n: usize,
+    mut a: [i32; n],
+}
+a.sort();
+a.reverse();
+```

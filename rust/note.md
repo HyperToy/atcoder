@@ -67,3 +67,27 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
     ```sh
     $ mv ~/Library/Preferences/cargo-atcoder.toml ~/Library/Application\ Support/cargo-atcoder.toml
     ```
+
+- abs07, kagami mochi
+    - https://atcoder.jp/contests/abs/submissions/34896902
+        - let uniq: HashSet<usize> = d.into_iter().collect();
+    - https://atcoder.jp/contests/abs/submissions/34898890
+        - let set = array.into_iter().collect::<HashSet<_>>();
+    - https://atcoder.jp/contests/abs/submissions/35065904
+        - list.dedup();
+
+
+for i in 
+do
+    cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust
+    cargo atcoder new $i
+    cd $i
+    code src/bin/a.rs
+done
+
+for i in 
+do
+    cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust/$i
+    cargo atcoder submit a
+    git add src/bin/a.rs
+done
