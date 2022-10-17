@@ -89,3 +89,5 @@ a.reverse();
 ## 文字列 substring
 - [参考](./tokiomarine2020/src/bin/a.rs)
 - substring のチェック [参考](./zone2021/src/bin/a.rs)
+- マッチする文字列をカウントするなら、 .matches("string").count() とかも良さそう
+    - [参考](https://atcoder.jp/contests/zone2021/submissions/30574024)
