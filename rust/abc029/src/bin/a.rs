@@ -4,5 +4,5 @@ fn main() {
     input! {
         w: String,
     }
-    println!("{}{}", w, "s");
+    println!("{}s", w);
 }
