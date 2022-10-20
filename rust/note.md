@@ -76,13 +76,14 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
     - https://atcoder.jp/contests/abs/submissions/35065904
         - list.dedup();
 
+- テストケースが存在しないパターンの問題で、コマンドから提出できなかった
+    - 直接提出しようとしたら、 C++ のままにしていて CE 出てるのにしばらく気づかなかった
 
 for i in 
 do
     cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust
     cargo atcoder new $i
-    cd $i
-    code src/bin/a.rs
+    code $i/src/bin/a.rs
 done
 
 for i in 
