@@ -79,16 +79,34 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
 - テストケースが存在しないパターンの問題で、コマンドから提出できなかった
     - 直接提出しようとしたら、 C++ のままにしていて CE 出てるのにしばらく気づかなかった
 
-for i in 
+for i in abc033 mujin-pc-2016 code-festival-2015-qualb code-festival-2015-quala
 do
     cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust
     cargo atcoder new $i
     code $i/src/bin/a.rs
 done
 
-for i in 
+# Fri
+for i in abc008 arc002 abc036 abc039
 do
     cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust/$i
     cargo atcoder submit a
     git add src/bin/a.rs
 done
+cd /Users/nodaryohey/Documents/1_kyoPro/atcoder
+git commit -m "[add] rust fill gray"
+./push.sh
+
+# Sat
+for i in abc033 mujin-pc-2016 code-festival-2015-quala
+do
+    cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust/$i
+    cargo atcoder submit a
+    git add src/bin/a.rs
+done
+cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust/code-festival-2015-qualb
+cargo atcoder submit --force a
+git add src/bin/a.rs
+cd /Users/nodaryohey/Documents/1_kyoPro/atcoder
+git commit -m "[add] rust fill gray"
+./push.sh

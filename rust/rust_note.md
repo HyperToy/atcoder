@@ -91,3 +91,11 @@ a.reverse();
 - substring のチェック [参考](./zone2021/src/bin/a.rs)
 - マッチする文字列をカウントするなら、 .matches("string").count() とかも良さそう
     - [参考](https://atcoder.jp/contests/zone2021/submissions/30574024)
+
+## String 型に対してパターンマッチ
+- [参考コード](https://atcoder.jp/contests/arc012/submissions/35797669)
+- [解説記事](https://totem3.hatenablog.jp/entry/2016/10/25/212303)
+- "hoge" みたいなのは &str になっているから、 String 型のパターンマッチに使おうとすると「型の不一致」になる。
+- s.as_str() で &str に変換できる。
+
+
