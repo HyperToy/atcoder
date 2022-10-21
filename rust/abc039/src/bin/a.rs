@@ -6,7 +6,7 @@ fn main() {
     }
     let mut s: u32 = 0;
     for i in 0..3 {
-        s += 2 * a[i] * a[i % 3];
+        s += 2 * a[i] * a[(i + 1) % 3];
     }
     println!("{}", s);
 }
