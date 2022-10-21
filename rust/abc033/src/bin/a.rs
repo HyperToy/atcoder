@@ -1,13 +1,12 @@
 use proconio::*;
-use proconio::marker::Chars;
 
 fn main() {
     input! {
-        s: Chars,
+        s: u32,
     }
     println!(
         "{}",
-        if s[0] == s[1] && s[0] == s[2] && s[0] == s[3] {
+        if s % 1111 == 0 {
             "SAME"
         } else {
             "DIFFERENT"

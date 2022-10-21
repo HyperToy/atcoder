@@ -6,12 +6,10 @@ fn main() {
     }
     println!(
         "{}",
-        match c {
-            'K' => "Right",
-            'L' => "Right",
-            'O' => "Right",
-            'P' => "Right",
-            _ => "Left",
+        if "KLOP".chars().any(|d| d == c) {
+            "Right"
+        } else {
+            "Left"
         }
     )
 }
