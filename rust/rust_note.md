@@ -99,3 +99,7 @@ a.reverse();
 - s.as_str() で &str に変換できる。
 
 
+## フォーマット format
+- [参考記事](https://zenn.dev/toga/books/rust-atcoder-old/viewer/13-format)
+    - {:.4} とすると、小数点以下の桁数を指定できる。
+
