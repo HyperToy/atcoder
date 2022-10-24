@@ -80,8 +80,9 @@ $ mv ~/Library/Application\ Support/cargo-atcoder.toml ~/Library/Preferences/car
     - 直接提出しようとしたら、 C++ のままにしていて CE 出てるのにしばらく気づかなかった
 
 - https://atcoder.jp/contests/mujin-pc-2016/submissions/23139355
-- 
-for i in 
+
+
+for i in arc020 abc001 abc026 arc031
 do
     cd /Users/nodaryohey/Documents/1_kyoPro/atcoder/rust
     cargo atcoder new $i
