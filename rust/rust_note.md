@@ -103,3 +103,5 @@ a.reverse();
 - [参考記事](https://zenn.dev/toga/books/rust-atcoder-old/viewer/13-format)
     - {:.4} とすると、小数点以下の桁数を指定できる。
 
+## 配列, ベクタ
+- [docs](https://doc.rust-jp.rs/book-ja/ch08-01-vectors.html)
