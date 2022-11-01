@@ -105,3 +105,14 @@ a.reverse();
 
 ## 配列, ベクタ
 - [docs](https://doc.rust-jp.rs/book-ja/ch08-01-vectors.html)
+
+## セット HashSet
+- [日本語docs: ハッシュ集合](https://doc.rust-jp.rs/rust-by-example-ja/std/hash/hashset.html)
+```rust
+use std::collections::HashSet;
+
+let mut st = HashSet::new(); // 作成
+st.insert(1); // 既に存在する値を追加しようとするとfalseを返す
+st.contains(&1); // true
+st.contains(&2); // false
+```
