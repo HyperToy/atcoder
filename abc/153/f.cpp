@@ -12,17 +12,17 @@ int main(){
     sort(m.begin(), m.end());
 
     ll ans = 0;
-    ll power = 0;
-    vector<ll> down(N + 1, 0);
+    vector<int> bomb(N + 1, 0);
     int r = 0;
     rep(i,N) {
-        power -= down[i];
-        m[i].second -= power;
+        if (i) bomb[i] += bomb[i - 1];
         while (r < N && m[r].first <= m[i].first + D * 2) r++;
-        int num = (max(0, m[i].second) + A - 1) / A;
-        power += A * num;
-        down[r] += A * num;
-        ans += num;
+        if (m[i].second > bomb[i]) {
+            int num = (m[i].second - bomb[i] + A - 1) / A;
+            ans += num;
+            bomb[i] += A * num;
+            bomb[r] -= A * num;
+        }
     }
 
     cout << ans << endl;
