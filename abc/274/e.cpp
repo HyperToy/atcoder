@@ -20,7 +20,8 @@ int main(){
     }
 
     vector dp(1 << (N + M + 1), vector<double>(N + M + 1, LINF));
-    for (int i = 0; i <= M; i++) dp[(1 << N + i + 1) - 1][0] = 0;
+    dp[(1 << N + M + 1) - 1][0] = 0;
+    rep(i,M) dp[(1 << N + i + 1) - 1][0] = 0; // 宝箱は無視しても良い
     for (int S = (1 << (N + M + 1)) - 1; S >= 0; S--) {
         double speed = 1.0;
         rep(i,M) if (S >> (N + i + 1) & 1) speed *= 2;

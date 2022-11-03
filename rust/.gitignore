@@ -1,6 +1,7 @@
 *.rs
 !a.rs
-!agc024/src/bin/c.rs
-!abc274/src/bin/b.rs
-!abc274/src/bin/c.rs
-!abc274/src/bin/d.rs
+!abc274/src/bin/*
+e.rs
+f.rs
+g.rs
+ex.rs
