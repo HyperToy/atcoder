@@ -23,8 +23,7 @@ int main(){
 
     vector<ll> dp(N, LINF);
     dp[0] = 0;
-    rep(i,K) {
-        int e = E[i];
+    for (int e : E) {
         chmin(dp[B[e]], dp[A[e]] + C[e]);
     }
 
