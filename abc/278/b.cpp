@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
 #define rep(i, n) for (int i = 0; i < (n); ++i)
 
 bool is_confusing(int h, int m) {
@@ -23,11 +22,8 @@ void next_time(int &h, int &m) {
 int main() {
     int H, M;
     cin >> H >> M;
-    while (1) {
-        if (is_confusing(H, M)) {
-            cout << H << endl << M << endl;
-            break;
-        }
+    while (!is_confusing(H, M)) {
         next_time(H, M);
     }
+    cout << H << endl << M << endl;
 }
