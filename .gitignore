@@ -2,6 +2,4 @@
 .vscode/
 rust/target/
 rust/*/Cargo*
-f.cpp
 g.cpp
-!abc/276/f.cpp
