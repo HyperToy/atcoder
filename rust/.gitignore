@@ -1,5 +1,6 @@
 *.rs
 !a.rs
+!b.rs
 !abc274/src/bin/*
 e.rs
 f.rs
