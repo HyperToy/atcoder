@@ -3,3 +3,5 @@
 rust/target/
 rust/*/Cargo*
 g.cpp
+
+.DS_Store
